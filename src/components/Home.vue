@@ -2,10 +2,6 @@
     <nav>
     <form @submit.prevent="consumirAPI">
       <div class="form-group">
-        <!-- <div class="input-group">
-          <input v-model="title" class="form-control">
-          <button @click="consumirAPI"><b><i>OK</i></b></button>
-        </div> -->
       </div>
     </form>
     <table class="table table-striped">
@@ -20,12 +16,13 @@
       <tbody>
         <tr v-for="regs in  reg" :key="regs.id_ac">
           <td>G81</td>
-          <td>{{ regs.temp }}</td>
+          <td>{{ regs.temp }} °C</td>
           <td>{{ regs.state }}</td>
           <td>{{regs.motion}}</td>
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-info my-4 btn-block" @click.prevent="manager()" v-if="show == true">Manager AC's</button>
 </nav>
 </template>
 <script>
@@ -35,7 +32,8 @@ export default {
  data () {
    return {
      reg : [],
-     url : "http://0.0.0.0:5000/regforhour"
+     url : "http://0.0.0.0:5000/regforhour", 
+     show : false
    }
  },
 created() {
@@ -47,11 +45,31 @@ methods: {
         console.log("passs")
         this.reg = response.data;
         console.log(this.reg);
+        for(var r in this.reg){
+          console.log(this.reg[r].motion)
+          if(this.reg[r].motion === 1){
+            this.reg[r].motion = "detectado";
+          }
+          if(this.reg[r].state === 1){
+            this.reg[r].state = "encendido"
+          }
+        }
         console.log("yes");
+        this.comprobar()
       }).catch(error => {
         console.log(error)
       });
+    },
+    comprobar(){
+      console.log(localStorage.getItem("is_admin"))
+      if(localStorage.getItem("is_admin") === "true"){
+        this.show = !this.show
+      }
+    },
+    manager(){
+      this.$router.push("/manager")
     }
+
     
 }
 };

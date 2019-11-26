@@ -64,12 +64,13 @@ export default {
     login() {
       axios.post(this.url, this.input)
         .then((response) => { //usea arrow functions (funciones flecha)
-        
+        console.log(response);
         if(response.data.access_token){
           localStorage.setItem('token', response.data.access_token)
           console.log(localStorage.getItem('token'));
         }
         if(localStorage.getItem('token')){
+          this.comprobar();
           this.$router.push('/Home');
         }else{
           this.show = !this.show;
@@ -80,8 +81,18 @@ export default {
     },
     goto() {
       this.$router.push('/signup');
+    },
+    comprobar(){
+      axios.get("http://0.0.0.0:5000/is_admin/"+this.input.username).then(response => {
+        console.log("is admin")
+        console.log(response)
+          localStorage.setItem("is_admin", response.data);
+          console.log(localStorage.getItem("is_admin"))
+      }).catch(error => {
+        console.log(error)
+      });
     }
-  },
+    }
 }
 </script>
 <style scoped>

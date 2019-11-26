@@ -15,7 +15,7 @@ import { store, mutations } from "@/store.js";
 
 export default {
   data: () => ({
-       isBurgerActive: false
+       //isBurgerActive: false
   }),
   computed: {
     isBurgerActive() {

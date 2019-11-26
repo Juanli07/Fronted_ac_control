@@ -41,8 +41,9 @@ export default {
   methods:{
     logOut(){
       if(localStorage.token){
-        this.$router.push('/');
         localStorage.removeItem('token');
+        localStorage.removeItem("is_admin")
+        this.$router.push('/');
       }
     },
   }

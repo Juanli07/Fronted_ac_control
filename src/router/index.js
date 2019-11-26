@@ -4,6 +4,7 @@ import Home from '../components/Home.vue'
 import View from '../components/View-G'
 import Login from '../components/Login.vue'
 import Sign from '../components/Signup.vue'
+import manager from '../components/manager.vue'
 
 Vue.use(Router)
 
@@ -13,10 +14,12 @@ const routes = [
         name: 'Inicio',
         component: Home,
         beforeEnter: (to, from, next) => {
-            if(localStorage.getItem('token').length > 0){
-                next();
-            }else{
-                next('/');
+            try{
+                if(localStorage.getItem('token').length > 0){
+                    next();
+                }
+            }catch{
+                next("/");
             }
         }
     },
@@ -25,21 +28,48 @@ const routes = [
         name: 'Gráficas',
         component: View,
         beforeEnter: (to, from, next) => {
-            if(localStorage.getItem('token').length > 0){
-                next();
+            try{
+                if(localStorage.getItem('token').length > 0){
+                    next();
+                }
+            }catch{
+                next("/");
             }
         }
     },
     {
         path:'/',
         name: 'Login',
-        component: Login
+        component: Login,
+        beforeEnter: (to, from, next) => {
+            try{
+                if(localStorage.getItem('token').length > 0){
+                    next("/home");
+                }
+            }catch{
+                next();
+            }
+        }
     },
     {
         path: '/signup',
         name: 'Signup',
         component: Sign
-    }
+    },
+    {
+        path:'/manager',
+        name: 'Manager',
+        component: manager,
+        beforeEnter: (to, from, next) => {
+            try{
+                if(localStorage.getItem('token').length > 0){
+                    next();
+                }
+            }catch{
+                next("/");
+            }
+        }
+    },
 ]
 
 export const router = new Router({
