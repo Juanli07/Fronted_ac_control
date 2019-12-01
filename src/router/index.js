@@ -5,6 +5,7 @@ import View from '../components/View-G'
 import Login from '../components/Login.vue'
 import Sign from '../components/Signup.vue'
 import manager from '../components/manager.vue'
+import button from '../components/button.vue'
 
 Vue.use(Router)
 
@@ -13,6 +14,20 @@ const routes = [
         path:'/home',
         name: 'Inicio',
         component: Home,
+        beforeEnter: (to, from, next) => {
+            try{
+                if(localStorage.getItem('token').length > 0){
+                    next();
+                }
+            }catch{
+                next("/");
+            }
+        }
+    },
+    {
+        path:'/button',
+        name: 'Button',
+        component: button,
         beforeEnter: (to, from, next) => {
             try{
                 if(localStorage.getItem('token').length > 0){

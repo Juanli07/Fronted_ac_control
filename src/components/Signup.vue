@@ -33,7 +33,7 @@
 
 
         <!-- Sign up button -->
-        <button @clickprevent="singup()" class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+        <button @click.prevent="singup()" class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
 
         <!-- Terms of service -->
             <em>Sign up</em> you agree to our

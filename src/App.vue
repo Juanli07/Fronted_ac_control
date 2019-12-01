@@ -17,7 +17,7 @@
           <router-link tag="a" to="/view-g" class="scroll-suave">Consumption</router-link>
         </li>
         <li>
-          <router-link tag="a" to="/home" class="scroll-suave">About us</router-link>
+          <router-link tag="a" to="/button" class="scroll-suave">AC control</router-link>
         </li>
         <li>
           <a href="" @click.prevent="logOut()">Log out</a>
