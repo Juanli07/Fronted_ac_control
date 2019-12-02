@@ -56,7 +56,7 @@ export default {
     .butt{
         align-content: center;
         padding-top: 150px;
-        padding-left: 100px;http://0.0.0.0:5000
+        padding-left: 100px;
         width: 200px;
     }
     #bt{
