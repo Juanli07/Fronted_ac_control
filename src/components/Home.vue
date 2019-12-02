@@ -32,7 +32,7 @@ export default {
  data () {
    return {
      reg : [],
-     url : "http://0.0.0.0:5000/regforhour", 
+     url : "https://ac-ctrl.herokuapp.com/regforhour", 
      show : false
    }
  },

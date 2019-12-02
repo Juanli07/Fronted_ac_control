@@ -53,7 +53,7 @@ export default {
       },
       name: 'BootstrapVue',
       show: false,
-      url: "http://0.0.0.0:5000/login"
+      url: "https://ac-ctrl.herokuapp.com/login"
     }
   },
   methods: {
@@ -66,10 +66,10 @@ export default {
         .then((response) => { //usea arrow functions (funciones flecha)
         console.log(response);
         if(response.data.access_token){
-          localStorage.setItem('token', response.data.access_token)
-          console.log(localStorage.getItem('token'));
+          localStorage.token = response.data.access_token;
+          console.log(localStorage.token);
         }
-        if(localStorage.getItem('token')){
+        if(localStorage.token){
           this.comprobar();
           this.$router.push('/Home');
         }else{
@@ -83,11 +83,11 @@ export default {
       this.$router.push('/signup');
     },
     comprobar(){
-      axios.get("http://0.0.0.0:5000/is_admin/"+this.input.username).then(response => {
+      axios.get("https://ac-ctrl.herokuapp.com/is_admin/"+this.input.username).then(response => {
         console.log("is admin")
         console.log(response)
-          localStorage.setItem("is_admin", response.data);
-          console.log(localStorage.getItem("is_admin"))
+          localStorage.is_admin = response.data;
+          console.log(localStorage.is_admin)
       }).catch(error => {
         console.log(error)
       });

@@ -10,7 +10,7 @@ export default {
     data(){
         return{
             state : "",
-            url : "http://0.0.0.0:5000/ac"
+            url : "https://ac-ctrl.herokuapp.com/ac"
         }
         
     },
@@ -34,7 +34,7 @@ export default {
             }
         },
         setState(){
-            axios.get("http://0.0.0.0:5000/ac").then(response =>{
+            axios.get("https://ac-ctrl.herokuapp.com/ac").then(response =>{
                 let r = response.data
                 for(let i = 0; i < r.length; i++){
                     if(r[i].id_ac ==="G81"){
@@ -56,7 +56,7 @@ export default {
     .butt{
         align-content: center;
         padding-top: 150px;
-        padding-left: 100px;
+        padding-left: 100px;http://0.0.0.0:5000
         width: 200px;
     }
     #bt{

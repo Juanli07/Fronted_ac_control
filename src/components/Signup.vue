@@ -54,7 +54,7 @@ export default {
                 email: '',
                 password: ''
             },
-            url: "http://0.0.0.0:5000/user",
+            url: "https://ac-ctrl.herokuapp.com/user",
             show:false
         }
     },

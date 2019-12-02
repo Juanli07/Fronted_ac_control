@@ -58,7 +58,7 @@ export default {
                 state: "0"
             },
             reg : [],
-            url : "http://0.0.0.0:5000/ac",
+            url : "https://ac-ctrl.herokuapp.com/ac",
             show : false
         }
     },
